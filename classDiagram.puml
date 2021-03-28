@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+class Member{
+    private Long id;
+    private String name;
+    private Grade grade;
+}
+class MemberServiceImpl{
+MemberRepository memberRepository
+   void join(Member member)
+   Member findMember(Long memberId)
+}
+interface MemberService{
+   void join(Member member)
+   Member findMember(Long memberId)
+}
+interface MemberRepository{
+void save(Member member)
+findById(Long memberId)
+}
+
+MemberService ..> MemberServiceImpl
+MemberServiceImpl --> MemberRepository
+
+
+enum Grade {
+BASIC
+VIP
+}
+
+@enduml
